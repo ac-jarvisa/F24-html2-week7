@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/svg-styles.css" rel="stylesheet">
+    <title>Playing with SVG</title>
+</head>
+<body>
+    <img class="resize" src="images/hamster.svg" alt="a cartoon hamster">
+
+    <!-- define an SVG image directly on your page 
+     if you are creating a SVG file, you need to use this:
+         version="1.1" xmlns="http://www.w3.org/2000/svg"
+    ...but in HTML you can leave those out -->
+
+    <!-- viewbox defines the visible area of the SVG, starting in the top left corner
+     (first two number) and going to the bottom right (second two numbers)-->
+    <svg width="200" height="200" viewBox="0 0 200 200">
+        <!-- when defining a shape, you can give it width, height, and fill
+         you can also give it x and y position 
+         you can also round the corners on the x or y axis-->
+        <rect width="100" height="150" fill="#C3A2F5" x="100" y="100" rx="10" ry="10" />
+        <!-- note the bottom third of this rectangle is outside the viewBox, so it
+         will be cut off -->
+
+         <!-- if you put two shapes in the same SVG, they will overlap -->
+
+         <!-- in a circle, CX defines the horizontal centre, CY defines the verticle
+          centre, and r is the radius -->
+        <circle class="change" cx="75" cy="75" r="100" fill="#A4F5D7" />
+
+        <!-- a line or a polyline (multiple lines) are defined by points on the SVG -->
+        <polyline class="seeThrough" stroke="#4CAAE1" stroke-width="5" points="25,25 25,50 60,90" />
+    </svg>
+
+    <div>
+        <svg viewBox="0 0 200 200" width="200" height="200">
+            <!-- use the DEFS tag to define a shape we can reuse -->
+            <defs>
+                <!-- id is required so you can reuse this object
+                 then you can define any other properties you want -->
+                <circle id="orange" fill="#CCCC00" r="10" />
+            </defs>
+            <!-- we can then reuse that circle multiple times -->
+            <g id="circles">
+                <!-- the group allows us to style multiple things all at once,
+                 kind of like a div -->
+                <use xlink:href="#orange" x="100" y="30" />
+                <use xlink:href="#orange" x="100" y="170" />
+                <use xlink:href="#orange" x="30" y="100" />
+                <use xlink:href="#orange" x="170" y="100" />
+            </g>
+            <!-- you can also reuse a group -->
+            <use xlink:href="#circles" class="circles-30" />
+            <use xlink:href="#circles" class="circles-60" />
+        </svg>
+    </div>
+
+    <section>
+        <!-- CSS shapes allows us to create shapes directly with HTML elements -->
+         <div class="clip-me">blank text</div>
+         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend magna cursus pellentesque varius. Pellentesque at quam est. Nam id risus non risus tempor rhoncus convallis ut lorem. Morbi laoreet massa eget purus suscipit molestie. Vivamus non sem in mauris auctor dapibus quis quis lectus. Mauris ut tincidunt ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse sollicitudin sem vel imperdiet sollicitudin. Praesent eleifend magna id felis commodo, eu commodo enim sodales.</div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* to show that SVGs can resize */
+.resize{
+    width:20vw;
+}
+
+/* we can style a CSS on the HTML page using classes or IDs you add to the elements
+ (you can also target the elements directly by tag name) */
+.change:hover{
+    fill: rgb(100,255,140);
+    stroke: rgb(200,60,90);
+    stroke-width: 0.5rem;
+    /* in HTML we were limited to pixels, but in CSS you can use any measurement */
+}
+
+/* there is no transparency in a hex code, but you can do it in CSS */
+.seeThrough{
+    fill: rgba(0,0,0,0);
+}
+
+/* you can apply transforms and animations to your SVG elements as well */
+.circles-30{
+    transform: rotate(30deg);
+    /* set the point we want this to rotate around */
+    transform-origin: 100px 100px;
+}
+.circles-60{
+    transform: rotate(60deg);
+    /* set the point we want this to rotate around */
+    transform-origin: 100px 100px;
+}
+
+/* we can create a shape out of an HTML element */
+.clip-me{
+    width:200px;
+    height:200px;
+    background-color:brown;
+    /* to create a shape, we define a clipping mask */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+    /* if we float this, text will wrap around it... */
+    float:left;
+
+    /* all HTML elements are boxes, unless you change their shape using shape-outside */
+    shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+    /* add a transition so it rotates on hover */
+    transition: all 2s;
+}
+
+.clip-me:hover{
+    transform: rotate(360deg);
+}
+
+section{
+    width:400px;
+    font-size:24px;
+    line-height:1.4;
+}
